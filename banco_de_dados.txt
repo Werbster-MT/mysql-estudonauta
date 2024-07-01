@@ -24,18 +24,18 @@ SQL: Structured Query Language
 
 MySQL:
 * DDL(Data Definition Language) - Porção de Definição (comandos de definição)
-* DML(Data Mannipulation Language) - Porção de Manipulação (comandos de manipulação)
-* DQL - Porção de Solicitações (comandos de solicitação) 
-* DCL - Porção de Controle (comandos de controle)
-* DTL - Porção de Transações (solicitações bem atendidas baseadas em DICA)
+* DML(Data Manipulation Language) - Porção de Manipulação (comandos de manipulação)
+* DQL(Data Query Language) - Porção de Solicitações (comandos de solicitação) 
+* DCL(Data Control Language) - Porção de Controle (comandos de controle)
+* DTL(Data Transaction Language) - Porção de Transações (solicitações bem atendidas baseadas em DICA)
 -> DICA:
-- Durabilidade: dados alterados matem o estado salvo.
+- Durabilidade: dados alterados mantêm o estado salvo.
 - Isolamento: duas transações feitas ao mesmo tempo não interferem uma na outra.
 - Consistência: toda transação leva um DB de um estado consistente para outro consistente.
 - Atomicidade: toda transação deve ser atômica (toda ela acontece ou nada acontece).
 
 * Comandos MySQL:
-- Criar banco: CREATE DATABASE cadastro ;
+- Criar banco: CREATE DATABASE cadastro;
 - Criar tabela: 
 use cadastro;
 CREATE TABLE pessoas (
@@ -54,7 +54,7 @@ values
 
 - Apagar banco: DROP DATABASE cadastro;
 
-- Contraints: São os parâmetros da query
+- Constraints: São os parâmetros da query
 Ex: 
 create database cadastro
 default character set utf8
@@ -69,7 +69,7 @@ alter table pessoas
 add column profissao varchar(10);
 
 Ex2: 
-alt table pessoas
+alter table pessoas
 add column profissao varchar(10);
 
 Ex3:
@@ -82,7 +82,7 @@ modify column profissao varchar(20);
 
 - Alterar o nome da coluna: change column profissao prof varchar(20) not null;
 Ex: 
-alter table
+alter table pessoas
 change column profissao prof varchar(20) not null;
 
 - Alterar o nome da tabela: rename to gafanhotos;
@@ -96,14 +96,13 @@ alter table cursos
 add primary key(idcurso);
 
 - Remover coluna: drop column profissao 
-
 Ex:
 alter table pessoas
 drop column profissao;
 
 * Tipos Primitivos:
 - Númerico: 
--> Inteiros: TinyInt, SamllInt, Int, MediumInt e BigInt
+-> Inteiros: TinyInt, SmallInt, Int, MediumInt e BigInt
 -> Reais: Decimal, Float, Double e Real
 -> Lógicos: Bit e Boolean
 
@@ -158,9 +157,9 @@ Ex: truncate cursos.
 OBS: Desse modo a estrutura da tabela se mantém intacta, poŕem todos os seus registros são apagados, diferentemente da utilização do drop. 
 
 * Select 
-O comando select classifica-se como um DQL (Data Queries Language) e desse moda possibilita diversas constraints para busca/seleção de dados.
+O comando select classifica-se como um DQL (Data Queries Language) e desse modo possibilita diversas constraints para busca/seleção de dados.
 
-- Selecionar todos as colunas de uma tabela:
+- Selecionar todas as colunas de uma tabela:
 Ex:
 select * from cursos
 order by nome asc;
@@ -213,11 +212,9 @@ Ex:
 select * from gafanhotos where sexo = 'F' and nacionalidade = 'Brasil' and nome like "J%"; 
 OBS: Pode ser usado com os curingas % e _ para indicar a não obrigatoriedade da presença de caracter ou o contrário, respectivamente.
 
-
 * Operador de contagem:
 Ex:
 select count(nome) from cursos where carga > 40;
-
 
 * Operador de máximo:
 Ex:
@@ -234,7 +231,6 @@ select sum(totaulas) from cursos where ano = '2016';
 * Operador média:
 Ex:
 select avg(totaulas) from cursos where ano = '2016';
-
 
 * Agrupamento:
 Ex:
